@@ -9,13 +9,17 @@ import { TicketDetailsComponent } from './ticket-details/ticket-details.componen
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TicketFiltersComponent } from './ticket-list/ticket-filters/ticket-filters.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoaderComponent } from './loader/loader.component';
+import { ErrorsComponent } from './errors/errors.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TicketListComponent,
     TicketDetailsComponent,
-    TicketFiltersComponent
+    TicketFiltersComponent,
+    LoaderComponent,
+    ErrorsComponent
   ],
   imports: [
     BrowserModule,

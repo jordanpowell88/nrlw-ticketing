@@ -1,6 +1,8 @@
 <div class="container">
   <h1>Nrl Ticket Management System</h1>
 
+  <app-errors *ngIf="errors$ | async as error" [error]="error"></app-errors>
+
   <div class="col-sm-12">
     <router-outlet></router-outlet>
   </div>

@@ -1,8 +1,12 @@
-<app-ticket-filters
-  [users]="users$ | async"
-  (filter)="updateFilters($event)"
-></app-ticket-filters>
+<app-loader [loading]="loading$ | async"></app-loader>
 
-<ul class="list-group">
-  <a *ngFor="let ticket of tickets$ | async" (click)="goToTicketDetails(ticket.id)"><li class="list-group-item">{{ ticket.description }}</li></a>
-</ul>
+<div *ngIf="!(loading$ | async)">
+  <app-ticket-filters
+    [users]="users$ | async"
+    (filter)="updateFilters($event)"
+  ></app-ticket-filters>
+
+  <ul  class="list-group">
+    <a *ngFor="let ticket of tickets$ | async" (click)="goToTicketDetails(ticket.id)"><li class="list-group-item">{{ ticket.description }}</li></a>
+  </ul>
+</div>
