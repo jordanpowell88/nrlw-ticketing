@@ -56,13 +56,15 @@ export class BackendService {
     return of(this.findUserById(id)).pipe(delay(randomDelay()));
   }
 
-  newTicket(payload: { description: string }) {
+  newTicket(description: string): Observable<ITicket> {
     const newTicket: ITicket = {
       id: ++this.lastId,
-      description: payload.description,
+      description,
       assigneeId: null,
       completed: false
     };
+
+    console.log(newTicket);
 
     return of(newTicket).pipe(
       delay(randomDelay()),

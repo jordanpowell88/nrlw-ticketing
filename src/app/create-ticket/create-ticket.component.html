@@ -1,0 +1,11 @@
+<form [formGroup]="form">
+  <div class="form-row">
+    <div class="form-group col">
+      <label for="description">Description</label>
+      <input class="form-control" [formControl]="form.description" />
+    </div>
+  </div>
+
+  <button class="btn btn-light" type="button" (click)="cancel()">Cancel</button>
+  <button class="btn btn-success" type="button" (click)="create()" [disabled]="!form.valid">Save</button>
+</form>

@@ -37,4 +37,8 @@ export class TicketListComponent implements OnInit {
     this.store.dispatch(ticketActions.setCurrentTicketId({ id }));
     this.router.navigate([`/tickets/${id}`]);
   }
+
+  createTicket(): void {
+    this.router.navigate(['/create']);
+  }
 }

@@ -11,6 +11,7 @@ import { TicketFiltersComponent } from './ticket-list/ticket-filters/ticket-filt
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoaderComponent } from './loader/loader.component';
 import { ErrorsComponent } from './errors/errors.component';
+import { CreateTicketComponent } from './create-ticket/create-ticket.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ErrorsComponent } from './errors/errors.component';
     TicketDetailsComponent,
     TicketFiltersComponent,
     LoaderComponent,
-    ErrorsComponent
+    ErrorsComponent,
+    CreateTicketComponent
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { catchError, map, switchMap } from 'rxjs/operators';
+import { catchError, concatMap, map, retry, switchMap, tap } from 'rxjs/operators';
 import { BackendService } from 'src/app/services/backend.service';
 import * as actions from './ticket.actions';
+import { ticketFeatureKey } from './ticket.reducer';
 
 @Injectable()
 export class TicketStoreEffects {
@@ -27,12 +28,13 @@ export class TicketStoreEffects {
   addTicketEffects$ = createEffect(() =>
     this.actions$.pipe(
       ofType(actions.addTicket),
-      switchMap(action => this.service.newTicket(action.ticket)
+      switchMap(action => this.service.newTicket(action.ticket.description)
         .pipe(
           map(ticket => actions.addTicketSuccess({ ticket })),
           catchError(error => of(actions.addTicketFailed({ error })))
         )
-      )
+      ),
+      retry(3),
     )
   );
 

@@ -6,7 +6,11 @@
     (filter)="updateFilters($event)"
   ></app-ticket-filters>
 
+
+  <h3>Tickets</h3>
   <ul  class="list-group">
     <a *ngFor="let ticket of tickets$ | async" (click)="goToTicketDetails(ticket.id)"><li class="list-group-item">{{ ticket.description }}</li></a>
   </ul>
+
+  <button class="btn btn-primary" type="button" (click)="createTicket()">Create Ticket</button>
 </div>
