@@ -28,3 +28,8 @@ export const selectCurrentTicketId = createSelector(
   selectTicketFeatureState,
   state => state.currentTicketId
 );
+
+export const selectCurrentTicket = createSelector(
+  selectTicketFeatureState,
+  state => state.tickets.find(ticket => ticket.id === state.currentTicketId)
+);

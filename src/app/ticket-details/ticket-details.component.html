@@ -1,0 +1,11 @@
+
+<button class="btn btn-light" (click)="goBack()">Go Back</button>
+
+<div *ngIf="ticket$ | async as ticket" class="card">
+  <div class="card-body">
+    <h5 class="card-title">Ticket #{{ ticket.id }}</h5>
+    <p>{{ ticket.description }}</p>
+    <p><strong>Status:</strong><em> {{ ticket.completed }}</em></p>
+    <p><strong>Assigned To:</strong><em> {{ ticket.assigneeId }}</em></p>
+  </div>
+</div>

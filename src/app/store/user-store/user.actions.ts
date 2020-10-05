@@ -1,6 +1,5 @@
 import { createAction, props } from '@ngrx/store';
 import { IUser } from 'src/app/interfaces';
-import { createDeflate } from 'zlib';
 
 export const loadUsers = createAction(
   '[USERS] Load Users'

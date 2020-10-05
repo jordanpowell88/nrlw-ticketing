@@ -7,6 +7,10 @@ export const ticketFeatureKey = 'ticket';
 
 const ticketReducer = createReducer(
   initialState,
+  on(actions.setCurrentTicketId, (state, { id }) => ({
+    ...state,
+    currentTicketId: id
+  })),
   on(actions.loadTickets, (state) => ({
     ...state,
     isLoading: true,

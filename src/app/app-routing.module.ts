@@ -1,8 +1,24 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { TicketDetailsComponent } from './ticket-details/ticket-details.component';
+import { TicketListComponent } from './ticket-list/ticket-list.component';
 
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'tickets',
+    pathMatch: 'full'
+  },
+  {
+    path: 'tickets',
+    component: TicketListComponent
+  },
+  {
+    path: 'tickets/:id',
+    component: TicketDetailsComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { delay, tap } from 'rxjs/operators';
 import { ITicket, IUser } from '../interfaces';
@@ -11,6 +12,7 @@ function randomDelay() {
   return Math.random() * 4000;
 }
 
+@Injectable({ providedIn: 'root' })
 export class BackendService {
   storedTickets: ITicket[] = [
     {

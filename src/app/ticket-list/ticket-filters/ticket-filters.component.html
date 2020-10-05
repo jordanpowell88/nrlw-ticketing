@@ -1,0 +1,22 @@
+<form [formGroup]="form">
+  <div class="form-row">
+    <div class="form-group col">
+      <label for="completed">Completed</label>
+      <select class="form-control" [formControl]="form.completed">
+        <option value=""></option>
+        <option value="true">Completed</option>
+        <option value="false">Incomplete</option>
+      </select>
+    </div>
+    <div class="form-group col">
+      <label for="assigneeId">Assignee</label>
+      <select class="form-control" [formControl]="form.assigneeId">
+        <option value=""></option>
+        <option *ngFor="let user of users" [value]="user.id">{{ user.name }}</option>
+      </select>
+    </div>
+    <div class="form-group col">
+      <button class="btn btn-success" (click)="updateFilters()" type="submit" [disabled]="!form.valid">Save Filters</button>
+    </div>
+  </div>
+</form>

@@ -2,6 +2,12 @@ import { createAction, props } from '@ngrx/store';
 import { ITicket, ITicketFilter } from 'src/app/interfaces';
 
 
+// SET CURRENT TICKET ID
+export const setCurrentTicketId = createAction(
+  '[TICKETS] Set Current Ticket Id',
+  props<{ id: number }>()
+);
+
 // LOAD
 export const loadTickets = createAction(
   '[TICKETS] Load Tickets'

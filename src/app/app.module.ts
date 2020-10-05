@@ -4,15 +4,26 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RootStoreModule } from './store/root-store.module';
+import { TicketListComponent } from './ticket-list/ticket-list.component';
+import { TicketDetailsComponent } from './ticket-details/ticket-details.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TicketFiltersComponent } from './ticket-list/ticket-filters/ticket-filters.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TicketListComponent,
+    TicketDetailsComponent,
+    TicketFiltersComponent
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
+    FormsModule,
     AppRoutingModule,
-    RootStoreModule
+    RootStoreModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
