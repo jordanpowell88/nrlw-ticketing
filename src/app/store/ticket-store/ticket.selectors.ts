@@ -1,4 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { ITicket, ITicketFilter } from 'src/app/interfaces';
 import { ITicketStoreState } from './ticket-store';
 import { ticketFeatureKey } from './ticket.reducer';
 
@@ -32,4 +33,15 @@ export const selectCurrentTicketId = createSelector(
 export const selectCurrentTicket = createSelector(
   selectTicketFeatureState,
   state => state.tickets.find(ticket => ticket.id === state.currentTicketId)
+);
+
+export const selectFilteredTickets = createSelector(
+  selectTicketFeatureState,
+  state => state.tickets.filter(ticket =>
+    state.currentFilter.assigneeId === null ||
+    ticket.assigneeId === state.currentFilter.assigneeId
+  ).filter(ticket =>
+    state.currentFilter.completed === null ||
+    ticket.completed === state.currentFilter.completed
+  )
 );

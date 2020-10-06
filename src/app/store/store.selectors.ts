@@ -1,4 +1,5 @@
 import { createSelector } from '@ngrx/store';
+import { ITicket, IUser } from '../interfaces';
 import * as ticketSelectors from './ticket-store/ticket.selectors';
 import * as userSelectors from './user-store/user.selectors';
 

@@ -22,7 +22,8 @@ export class TicketFiltersComponent implements OnInit {
 
   updateFilters(): void {
     this.filter.emit({
-      ...this.form.value
-    });
+      assigneeId: Number(this.form.assigneeId.value),
+      completed: this.form.completed.value === 'true' ? true : false
+    } as ITicketFilter);
   }
 }

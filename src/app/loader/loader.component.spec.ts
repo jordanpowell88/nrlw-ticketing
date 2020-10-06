@@ -16,6 +16,7 @@ describe('LoaderComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(LoaderComponent);
     component = fixture.componentInstance;
+    component.loading = false;
     fixture.detectChanges();
   });
 

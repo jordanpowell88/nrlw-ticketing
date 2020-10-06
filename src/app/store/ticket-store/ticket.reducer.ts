@@ -1,3 +1,4 @@
+import { tick } from '@angular/core/testing';
 import { Action, createReducer, on } from '@ngrx/store';
 import { ITicket } from 'src/app/interfaces';
 import { initialState, ITicketStoreState } from './ticket-store';
@@ -85,7 +86,15 @@ const ticketReducer = createReducer(
 );
 
 function updateTicket(tickets: ITicket[], ticket: ITicket): ITicket[] {
-  return tickets.map((t: ITicket) => ticket.id !== t.id ? t : { ...t, ...ticket} as ITicket );
+  const oldTicket = tickets.find(t => t.id === ticket.id);
+
+  return [
+    ...tickets.filter(t => t.id !== ticket.id),
+    {
+      ...oldTicket,
+      ...ticket
+    }
+  ];
 }
 
 export function reducer(state: ITicketStoreState, action: Action): ITicketStoreState {

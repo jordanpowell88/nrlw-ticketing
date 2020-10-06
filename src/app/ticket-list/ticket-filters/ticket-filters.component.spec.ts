@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { TicketFiltersComponent } from './ticket-filters.component';
 
@@ -8,7 +9,8 @@ describe('TicketFiltersComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TicketFiltersComponent ]
+      declarations: [ TicketFiltersComponent ],
+      imports: [ReactiveFormsModule]
     })
     .compileComponents();
   }));
