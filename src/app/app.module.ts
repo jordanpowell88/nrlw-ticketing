@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoaderComponent } from './loader/loader.component';
 import { ErrorsComponent } from './errors/errors.component';
 import { CreateTicketComponent } from './create-ticket/create-ticket.component';
+import { UserNamePipe } from './pipes/user-name.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CreateTicketComponent } from './create-ticket/create-ticket.component';
     TicketFiltersComponent,
     LoaderComponent,
     ErrorsComponent,
-    CreateTicketComponent
+    CreateTicketComponent,
+    UserNamePipe
   ],
   imports: [
     BrowserModule,

@@ -5,9 +5,7 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { IState } from 'src/app/store/state';
 import { initialState as ticketInitialState, ITicketStoreState } from 'src/app/store/ticket-store/ticket-store';
 import { initialState as userInitialState, IUserStore } from 'src/app/store/user-store/user-store';
-import { IBaseState } from '../store/base-state';
 import { TicketListComponent } from './ticket-list.component';
-import * as selectors from 'src/app/store/store.selectors';
 import { ITicket, IUser } from '../interfaces';
 import * as ticketSelectors from 'src/app/store/ticket-store/ticket.selectors';
 import * as userSelectors from 'src/app/store/user-store/user.selectors';
@@ -21,7 +19,7 @@ describe('TicketListComponent', () => {
   let component: TicketListComponent;
   let fixture: ComponentFixture<TicketListComponent>;
   let store: MockStore;
-  let isLoading: MemoizedSelector<IBaseState, boolean>;
+  let isLoading: MemoizedSelector<ITicketStoreState, boolean>;
   let tickets: MemoizedSelector<ITicketStoreState, ITicket[]>;
   let users: MemoizedSelector<IUserStore, IUser[]>;
 
@@ -36,7 +34,7 @@ describe('TicketListComponent', () => {
     .compileComponents();
 
     store = TestBed.inject(MockStore);
-    isLoading = store.overrideSelector(selectors.selectIsLoading, false);
+    isLoading = store.overrideSelector(ticketSelectors.selectIsLoading, false);
     tickets = store.overrideSelector(ticketSelectors.selectFilteredTickets, []);
     users = store.overrideSelector(userSelectors.selectUsers, []);
   }));

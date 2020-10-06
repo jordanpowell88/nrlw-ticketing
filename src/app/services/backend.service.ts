@@ -64,11 +64,11 @@ export class BackendService {
       completed: false
     };
 
-    console.log(newTicket);
-
     return of(newTicket).pipe(
       delay(randomDelay()),
-      tap((ticket: ITicket) => this.storedTickets.push(ticket))
+      tap(console.log),
+      tap((ticket: ITicket) => this.storedTickets = [ ...this.storedTickets, ticket]),
+      tap(() => this.storedTickets)
     );
   }
 
@@ -91,11 +91,9 @@ export class BackendService {
   complete(ticketId: number, completed: boolean) {
     const foundTicket = this.findTicketById(+ticketId);
     if (foundTicket) {
-      return of(foundTicket).pipe(
+      return of({ ...foundTicket, completed: true }).pipe(
         delay(randomDelay()),
-        tap((ticket: ITicket) => {
-          ticket.completed = true;
-        })
+        tap((ticket: ITicket) => ticket.completed = true)
       );
     }
 

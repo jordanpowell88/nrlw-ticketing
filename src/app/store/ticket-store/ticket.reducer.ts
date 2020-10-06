@@ -28,7 +28,7 @@ const ticketReducer = createReducer(
     isLoading: false,
     error
   })),
-  on(actions.addTicket, (state, { ticket }) => ({
+  on(actions.addTicket, (state) => ({
     ...state,
     isLoading: false,
     error: null
@@ -81,7 +81,7 @@ const ticketReducer = createReducer(
   })),
   on(actions.filterTickets, (state, { filter }) => ({
     ...state,
-    currentFilter: filter
+    filter
   }))
 );
 

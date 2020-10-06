@@ -1,19 +1,18 @@
 import { ITicket, ITicketFilter } from 'src/app/interfaces';
-import { IBaseState } from '../base-state';
 
-export interface ITicketStoreState extends IBaseState {
+export interface ITicketStoreState {
+  isLoading: boolean;
+  error: string;
   tickets: ITicket[];
-  currentFilter: ITicketFilter;
-  currentTicketId: number;
+  filter: ITicketFilter;
 }
 
 export const initialState: ITicketStoreState = {
   isLoading: false,
   error: null,
   tickets: [],
-  currentFilter: {
+  filter: {
     assigneeId: null,
     completed: null
   },
-  currentTicketId: null
 };

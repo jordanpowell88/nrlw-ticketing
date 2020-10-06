@@ -7,26 +7,25 @@ describe('TicketSelectors', () => {
     it('returns expected state', () => {
       // arrange
       const ticket = { id: 1 } as ITicket;
-      const inputState = { ...initialState, currentTicketId: 1, tickets: [ticket] } as ITicketStoreState;
+      const inputState = { ...initialState, tickets: [ticket] } as ITicketStoreState;
       const expected = ticket;
 
       // act
-      const actual = ticketSelectors.selectCurrentTicket.projector(inputState);
+      const actual = ticketSelectors.selectCurrentTicket.projector(inputState, 1);
 
       // assert
       expect(actual).toEqual(expected);
     });
   });
-  describe('selectFiltredTickets', () => {
+  describe('selectFilteredTickets', () => {
     it('returns expected state', () => {
       // arrange
-      const ticket1 = { assigneeId: 111 } as ITicket;
-      const ticket2 = { assigneeId: 111 } as ITicket;
-      const ticket3 = { completed: true } as ITicket;
-      const tickets = [ ticket1, ticket2, ticket3];
-      const currentFilter = { assigneeId: 111 } as ITicketFilter;
-      const inputState = { ...initialState, tickets, currentFilter } as ITicketStoreState;
-      const expected = [ticket1, ticket2];
+      const ticket1 = { assigneeId: 111, completed: true } as ITicket;
+      const ticket2 = { assigneeId: 111, completed: false } as ITicket;
+      const tickets = [ ticket1, ticket2];
+      const filter = { assigneeId: 111, completed: true } as ITicketFilter;
+      const inputState = { ...initialState, tickets, filter } as ITicketStoreState;
+      const expected = [ticket1];
 
       // act
       const actual = ticketSelectors.selectFilteredTickets.projector(inputState);

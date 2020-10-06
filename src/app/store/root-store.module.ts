@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StoreModule } from '@ngrx/store';
+import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreDevtools, StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { TicketStoreModule } from './ticket-store/ticket-store.module';
 import { UserStoreModule } from './user-store/user-store.module';

@@ -6,7 +6,6 @@ import * as userActions from 'src/app/store/user-store/user.actions';
 import * as ticketSelectors from 'src/app/store/ticket-store/ticket.selectors';
 import { ITicketFilter } from '../interfaces';
 import { Router } from '@angular/router';
-import * as selectors from 'src/app/store/store.selectors';
 
 @Component({
   selector: 'app-ticket-list',
@@ -16,12 +15,12 @@ import * as selectors from 'src/app/store/store.selectors';
 export class TicketListComponent implements OnInit {
   tickets$ = this.store.select(ticketSelectors.selectFilteredTickets);
   users$ = this.store.select(userSelectors.selectUsers);
-  loading$ = this.store.select(selectors.selectIsLoading);
-  errors$ = this.store.select(selectors.selectErrors);
+  loading$ = this.store.select(ticketSelectors.selectIsLoading);
+  errors$ = this.store.select(ticketSelectors.selectError);
 
   constructor(
-    private readonly store: Store,
-    private readonly router: Router
+    private store: Store,
+    private router: Router
   ) { }
 
   ngOnInit(): void {

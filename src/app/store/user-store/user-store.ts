@@ -1,12 +1,9 @@
 import { IUser } from 'src/app/interfaces';
-import { IBaseState } from '../base-state';
 
-export interface IUserStore extends IBaseState {
+export interface IUserStore {
   users: IUser[];
 }
 
 export const initialState: IUserStore = {
-  isLoading: false,
-  error: null,
-  users: null
+  users: []
 };

@@ -16,15 +16,14 @@ export class CreateTicketComponent {
 
   constructor(
     readonly fb: FormBuilder,
-    private readonly store: Store,
-    private readonly router: Router
+    private store: Store,
+    private router: Router
   ) {
     this.form = new CreateTicketForm(fb);
   }
 
   create(): void {
-    const ticket = { description: this.form.description.value } as ITicket;
-    this.store.dispatch(actions.addTicket({ ticket }));
+    this.store.dispatch(actions.addTicket({ description: this.form.description.value }));
     this.cancel();
   }
 

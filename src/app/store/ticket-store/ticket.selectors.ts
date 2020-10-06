@@ -1,47 +1,33 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { ITicket, ITicketFilter } from 'src/app/interfaces';
 import { ITicketStoreState } from './ticket-store';
 import { ticketFeatureKey } from './ticket.reducer';
 
 export const selectTicketFeatureState = createFeatureSelector<ITicketStoreState>(ticketFeatureKey);
 
-export const selectTicketIsLoading = createSelector(
+export const selectIsLoading = createSelector(
   selectTicketFeatureState,
   state => state.isLoading
 );
 
-export const selectTicketError = createSelector(
+export const selectError = createSelector(
   selectTicketFeatureState,
   state => state.error
 );
 
-export const selectAllTickets = createSelector(
+export const selectCurrentFilter = createSelector(
   selectTicketFeatureState,
-  state => state.tickets
-);
-
-export const selectCurrentTicketFilter = createSelector(
-  selectTicketFeatureState,
-  state => state.currentFilter
-);
-
-export const selectCurrentTicketId = createSelector(
-  selectTicketFeatureState,
-  state => state.currentTicketId
+  state => state.filter
 );
 
 export const selectCurrentTicket = createSelector(
   selectTicketFeatureState,
-  state => state.tickets.find(ticket => ticket.id === state.currentTicketId)
+  (state: ITicketStoreState, id: number) => state.tickets.find(ticket => ticket.id === id)
 );
 
 export const selectFilteredTickets = createSelector(
   selectTicketFeatureState,
   state => state.tickets.filter(ticket =>
-    state.currentFilter.assigneeId === null ||
-    ticket.assigneeId === state.currentFilter.assigneeId
-  ).filter(ticket =>
-    state.currentFilter.completed === null ||
-    ticket.completed === state.currentFilter.completed
+    (ticket.assigneeId === state.filter.assigneeId || state.filter.assigneeId === null) &&
+    (ticket.completed === state.filter.completed || state.filter.completed === null)
   )
 );

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import * as selectors from 'src/app/store/store.selectors';
+import * as ticketSelectors from 'src/app/store/ticket-store/ticket.selectors';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,7 @@ import * as selectors from 'src/app/store/store.selectors';
 })
 export class AppComponent {
   title = 'nrwl-ticketing';
-  errors$ = this.store.select(selectors.selectErrors);
+  errors$ = this.store.select(ticketSelectors.selectError);
 
-  constructor(private readonly store: Store) { }
+  constructor(private store: Store) { }
 }

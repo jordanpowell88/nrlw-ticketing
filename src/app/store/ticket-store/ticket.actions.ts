@@ -26,7 +26,7 @@ export const loadTicketsFailed = createAction(
 // ADD
 export const addTicket = createAction(
   '[TICKETS] Add Ticket',
-  props<{ ticket: ITicket }>()
+  props<{ description: string }>()
 );
 
 export const addTicketSuccess = createAction(

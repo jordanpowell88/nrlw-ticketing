@@ -64,7 +64,7 @@ describe('TicketReducer', () => {
       // arrange
       const filter = { assigneeId: 777, completed: true } as ITicketFilter;
       const action = actions.filterTickets({ filter });
-      const expected = { ...initialState, currentFilter: filter } as ITicketStoreState;
+      const expected = { ...initialState, filter } as ITicketStoreState;
 
       // act
       const actual = reducer(initialState, action);
